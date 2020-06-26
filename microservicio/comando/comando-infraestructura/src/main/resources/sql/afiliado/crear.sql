@@ -1,0 +1,2 @@
+insert into afiliado (TipoDocumento, Documento, Nombre, Apellido, Sexo, Direccion, Telefono, Correo, Activo, FechaCreacion)
+values (:tipoDocumento, :documento, :nombre, :apellido, :sexo, :direccion, :telefono, :correo, :activo, NOW())
