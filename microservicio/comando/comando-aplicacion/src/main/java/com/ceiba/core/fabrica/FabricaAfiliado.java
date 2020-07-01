@@ -9,7 +9,7 @@ public class FabricaAfiliado {
 	
 	public Afiliado crear(ComandoAfiliado comandoAfiliado) {
 	    return new Afiliado(
-	    	comandoAfiliado.getId(),
+	    	comandoAfiliado.getIdAfiliado(),
 	        comandoAfiliado.getTipoDocumento(),
 	    	comandoAfiliado.getDocumento(),
 	        comandoAfiliado.getNombre(),
@@ -23,7 +23,7 @@ public class FabricaAfiliado {
 
 	public Afiliado actualizar(ComandoAfiliado comandoAfiliado) {
 		return new Afiliado(
-				comandoAfiliado.getId(),
+				comandoAfiliado.getIdAfiliado(),
 				comandoAfiliado.getTipoDocumento(),
 				comandoAfiliado.getDocumento(),
 				comandoAfiliado.getNombre(),

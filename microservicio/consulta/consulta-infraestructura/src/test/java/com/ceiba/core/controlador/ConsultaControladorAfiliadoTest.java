@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,45 +25,23 @@ public class ConsultaControladorAfiliadoTest {
 
 	@Autowired
 	private MockMvc mocMvc;
-	private static final String NOMBRE = "sergio";
-	private static final String FECHA_CREACION = "2019-09-11";
 
 	@Test
 	public void listar() throws Exception {
 		// arrange
 
 		// act - assert
-		mocMvc.perform(get("/usuarios").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-				.andExpect(jsonPath("$", hasSize(4)))
-				.andExpect(jsonPath("$[0].nombre", is("test")))
-				.andExpect(jsonPath("$[1].nombre", is("pedro")))
-				.andExpect(jsonPath("$[2].nombre", is("sergio")))
-				.andExpect(jsonPath("$[3].nombre", is("mary")));
+		mocMvc.perform(get("/afiliados").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("$[1].idAfiliado", CoreMatchers.is(2)))
+				.andExpect(jsonPath("$[1].tipoDocumento", CoreMatchers.is("CC")))
+				.andExpect(jsonPath("$[1].documento", CoreMatchers.is("1040030651")))
+				.andExpect(jsonPath("$[1].nombre", CoreMatchers.is("Juan")))
+				.andExpect(jsonPath("$[1].apellido", CoreMatchers.is("Hoyos")))
+				.andExpect(jsonPath("$[1].sexo", CoreMatchers.is("M")))
+				.andExpect(jsonPath("$[1].direccion", CoreMatchers.is("Calle 10")))
+				.andExpect(jsonPath("$[1].telefono", CoreMatchers.is("5533887")))
+				.andExpect(jsonPath("$[1].correo", CoreMatchers.is("juan@hotmail.com")))
+				.andExpect(jsonPath("$[1].activo", CoreMatchers.is(true)))
+				.andExpect(jsonPath("$[1].fechaCreacion", CoreMatchers.is("2020-03-08 00:00:00")));
 	}
-
-	@Test
-	public void filtrarPorFechaMayorIgual() throws Exception {
-		// arrange
-
-		// act - assert
-		mocMvc.perform(get("/usuarios?fechaCreacion=" + FECHA_CREACION).contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(2)))
-				.andExpect(jsonPath("$[0].fechaCreacion", is("2019-09-11 00:00:00")))
-				.andExpect(jsonPath("$[1].fechaCreacion", is("2019-09-14 00:00:00")));
-
-	}
-
-	@Test
-	public void filtrarPorNombre() throws Exception {
-		// arrange
-
-		// act - assert
-		mocMvc.perform(get("/usuarios?nombre=" + NOMBRE).contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(1)))
-				.andExpect(jsonPath("$[0].nombre", is("sergio")));
-
-	}
-
-	
-
 }

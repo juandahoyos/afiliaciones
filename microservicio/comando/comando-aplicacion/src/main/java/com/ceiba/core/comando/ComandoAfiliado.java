@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ComandoAfiliado {
 
-    private Long id;
+    private int idAfiliado;
     private String tipoDocumento;
     private String documento;
     private String nombre;

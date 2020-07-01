@@ -17,7 +17,7 @@ public class Afiliado {
     private static final String SE_DEBE_INGRESAR_EL_CORREO= "Se debe ingresar el correo del afiliado";
     private static final String SE_DEBE_SELECCIONAR_UN_ESTADO= "Se debe seleccionar el estado del afiliado";
     
-	private Long id;
+	private int idAfiliado;
 	private String tipoDocumento;
 	private String documento;
     private String nombre;
@@ -28,7 +28,7 @@ public class Afiliado {
 	private String correo;
     private boolean activo;
 
-    public Afiliado(Long id, String tipoDocumento, String documento, String nombre, String apellido, String sexo, String direccion,
+    public Afiliado(int idAfiliado, String tipoDocumento, String documento, String nombre, String apellido, String sexo, String direccion,
                     String telefono, String correo, boolean activo) {
         validarObligatorio(tipoDocumento, SE_DEBE_SELECCIONAR_EL_TIPO_DE_DOCUMENTO);
         validarObligatorio(documento, SE_DEBE_INGRESAR_EL_NUMERO_DE_DOCUMENTO);
@@ -41,7 +41,7 @@ public class Afiliado {
         validarObligatorio(activo, SE_DEBE_SELECCIONAR_UN_ESTADO);
 
 
-        this.id = id;
+        this.idAfiliado = idAfiliado;
         this.tipoDocumento = tipoDocumento;
         this.documento = documento;
         this.nombre = nombre;
@@ -53,8 +53,8 @@ public class Afiliado {
         this.activo = activo;
     }
 
-    public Long getId() {
-        return id;
+    public int getIdAfiliado() {
+        return idAfiliado;
     }
 
     public String getTipoDocumento() {

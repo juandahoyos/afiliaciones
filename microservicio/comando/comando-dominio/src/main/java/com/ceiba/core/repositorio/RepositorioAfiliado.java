@@ -2,6 +2,8 @@ package com.ceiba.core.repositorio;
 
 import com.ceiba.core.modelo.afiliado.Afiliado;
 
+import java.util.List;
+
 public interface RepositorioAfiliado {
 	/**
 	 * Permite crear un usuario
@@ -18,22 +20,21 @@ public interface RepositorioAfiliado {
     
     /**
      * Permite eliminar un usuario
-     * @param id
+     * @param idAfiliado
      */
-    void eliminar(Long id);
-    
-    /**
-     * Permite validar si existe un usuario con un nombre
-     * @param nombre
-     * @return si existe o no
-     */
-    boolean existe(String nombre);
-    
-    /**
-     * Permite validar si existe un usuario con un nombre excluyendo un id
-     * @param nombre
-     * @return si existe o no
-     */
-    boolean existeExcluyendoId(Long id,String nombre);
+    void eliminar(Long idAfiliado);
 
+	/**
+	 * Permite validar si existe un afiliado con el número de documento
+	 * @param documento
+	 * @return si existe o no
+	 */
+	boolean existe(String documento);
+
+    /**
+     * Metodo para validar si un afiliafo existe o no
+     * @param idAfiliado
+     * @return lista con el id del afiliado
+     */
+    List<Integer> existeAfiliado(int idAfiliado);
 }

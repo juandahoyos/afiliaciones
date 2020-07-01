@@ -37,20 +37,20 @@ public class ComandoControladorAfiliado {
 
 	@PostMapping
 	@ApiOperation("Crear Afiliado")
-	public ComandoRespuesta<Long> crear(@RequestBody ComandoAfiliado comandoAfiliado) {
+	public ComandoRespuesta<String> crear(@RequestBody ComandoAfiliado comandoAfiliado) {
 		return manejadorCrearAfiliado.ejecutar(comandoAfiliado);
 	}
 
-	@DeleteMapping(value="/{id}")
+	@DeleteMapping(value="/{idAfiliado}")
 	@ApiOperation("Eliminar Afiliado")
-	public void eliminar(@PathVariable Long id) {
-		manejadorEliminarAfiliado.ejecutar(id);
+	public void eliminar(@PathVariable Long idAfiliado) {
+		manejadorEliminarAfiliado.ejecutar(idAfiliado);
 	}
 	
-	@PutMapping(value="/{id}")
+	@PutMapping(value="/{idAfiliado}")
 	@ApiOperation("Actualizar Afiliado")
-	public void actualizar(@RequestBody ComandoAfiliado comandoAfiliado, @PathVariable Long id) {
-		comandoAfiliado.setId(id);
+	public void actualizar(@RequestBody ComandoAfiliado comandoAfiliado, @PathVariable Integer idAfiliado) {
+		comandoAfiliado.setIdAfiliado(idAfiliado);
 		manejadorActualizarAfiliado.ejecutar(comandoAfiliado);
 	}
 }

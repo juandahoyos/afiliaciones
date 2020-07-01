@@ -9,7 +9,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class DtoAfiliado {
 
-	private int id;
+	private int idAfiiado;
 	private String tipoDocumento;
 	private String documento;
     private String nombre;

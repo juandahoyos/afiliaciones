@@ -8,4 +8,4 @@ set TipoDocumento = :tipoDocumento,
 	Telefono = :telefono,
 	Correo = :correo,
 	Activo = :activo
-where id = :id
+where IdAfiliado = :idAfiliado

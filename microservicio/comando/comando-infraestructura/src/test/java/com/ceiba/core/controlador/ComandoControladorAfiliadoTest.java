@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.ceiba.core.ApplicationMock;
 import com.ceiba.core.comando.ComandoAfiliado;
-import com.ceiba.core.testdatabuilder.ComandoUsuarioTestDataBuilder;
+import com.ceiba.core.testdatabuilder.ComandoAfiliadoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
@@ -36,12 +36,12 @@ public class ComandoControladorAfiliadoTest {
     @Test
     public void crear() throws Exception{
         // arrange
-        ComandoAfiliado usuario = new ComandoUsuarioTestDataBuilder().build();
+        ComandoAfiliado afiliado = new ComandoAfiliadoTestDataBuilder().build();
 
         // act - assert
-        mocMvc.perform(post("/usuarios")
+        mocMvc.perform(post("/afiliados")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(objectMapper.writeValueAsString(usuario)))
+                .content(objectMapper.writeValueAsString(afiliado)))
         		.andExpect(status().isOk())
         		.andExpect(content().json("{'valor': 1}"));
     }
@@ -49,23 +49,23 @@ public class ComandoControladorAfiliadoTest {
     @Test
     public void actualizar() throws Exception{
         // arrange
-    	Long id = 1L;
-        ComandoAfiliado usuario = new ComandoUsuarioTestDataBuilder().build();
+    	Integer idAfiliado = 1;
+        ComandoAfiliado afiliado = new ComandoAfiliadoTestDataBuilder().build();
 
         // act - assert
-        mocMvc.perform(put("/usuarios/{id}",id)
+        mocMvc.perform(put("/afiliados/{idAfiliado}",idAfiliado)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(objectMapper.writeValueAsString(usuario)))
+                .content(objectMapper.writeValueAsString(afiliado)))
         		.andExpect(status().isOk());
     }
     
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 1L;
+        Long idAfiliado = 1L;
 
         // act - assert
-        mocMvc.perform(delete("/usuarios/{id}",id)
+        mocMvc.perform(delete("/afiliados/{idAfiliado}",idAfiliado)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

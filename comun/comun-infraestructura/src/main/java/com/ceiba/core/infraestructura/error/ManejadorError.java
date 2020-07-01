@@ -3,6 +3,7 @@ package com.ceiba.core.infraestructura.error;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.ceiba.core.dominio.excepcion.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -11,11 +12,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.ceiba.core.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.core.dominio.excepcion.ExcepcionLongitudValor;
-import com.ceiba.core.dominio.excepcion.ExcepcionSinDatos;
-import com.ceiba.core.dominio.excepcion.ExcepcionValorInvalido;
-import com.ceiba.core.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.core.infraestructura.excepcion.ExcepcionTecnica;
 
 @ControllerAdvice
@@ -29,6 +25,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
     public ManejadorError() {
         CODIGOS_ESTADO.put(ExcepcionLongitudValor.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionNoExisteRegistro.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionValorInvalido.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionSinDatos.class.getSimpleName(), HttpStatus.NOT_FOUND.value());
         CODIGOS_ESTADO.put(ExcepcionValorObligatorio.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());

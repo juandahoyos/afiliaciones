@@ -10,7 +10,7 @@ public class ServicioEliminarAfiliado {
         this.repositorioAfiliado = repositorioAfiliado;
     }
 
-    public void ejecutar(Long id) {
-        this.repositorioAfiliado.eliminar(id);
+    public void ejecutar(Long idAfilido) {
+        this.repositorioAfiliado.eliminar(idAfilido);
     }
 }

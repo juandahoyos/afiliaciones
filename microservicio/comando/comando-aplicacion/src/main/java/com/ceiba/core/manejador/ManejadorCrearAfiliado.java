@@ -10,7 +10,7 @@ import com.ceiba.core.modelo.afiliado.Afiliado;
 import com.ceiba.core.servicio.afiliado.ServicioCrearAfiliado;
 
 @Component
-public class ManejadorCrearAfiliado implements ManejadorComandoRespuesta<ComandoAfiliado, ComandoRespuesta<Long>> {
+public class ManejadorCrearAfiliado implements ManejadorComandoRespuesta<ComandoAfiliado, ComandoRespuesta<String>> {
 
 	private final FabricaAfiliado fabricaAfiliado;
 	private final ServicioCrearAfiliado servicioCrearAfiliado;
@@ -20,8 +20,8 @@ public class ManejadorCrearAfiliado implements ManejadorComandoRespuesta<Comando
 		this.servicioCrearAfiliado = servicioCrearAfiliado;
 	}
 
-	public ComandoRespuesta<Long> ejecutar(ComandoAfiliado comandoAfiliado) {
+	public ComandoRespuesta<String> ejecutar(ComandoAfiliado comandoAfiliado) {
 		Afiliado afiliado = this.fabricaAfiliado.crear(comandoAfiliado);
-		return new ComandoRespuesta<>(this.servicioCrearAfiliado.ejecutar(afiliado));
+		return new ComandoRespuesta<String>(this.servicioCrearAfiliado.ejecutar(afiliado));
 	}
 }

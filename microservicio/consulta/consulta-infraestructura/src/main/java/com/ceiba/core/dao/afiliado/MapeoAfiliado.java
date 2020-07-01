@@ -14,7 +14,7 @@ public class MapeoAfiliado implements RowMapper<DtoAfiliado>,MapperResult {
     @Override
     public DtoAfiliado mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         
-    	Integer id = resultSet.getInt("Id");
+    	Integer idAfiliado = resultSet.getInt("IdAfiliado");
         String documento = resultSet.getString("Documento");
         String tipoDocumento = resultSet.getString("TipoDocumento");
         String nombre = resultSet.getString("Nombre");
@@ -26,7 +26,7 @@ public class MapeoAfiliado implements RowMapper<DtoAfiliado>,MapperResult {
         boolean activo = resultSet.getBoolean("Activo");
         LocalDateTime fechaCreacion = extraerLocalDateTime(resultSet, "FechaCreacion");
 
-        return new DtoAfiliado(id,tipoDocumento,documento,nombre,apellido,sexo,direccion,telefono,correo,activo,fechaCreacion);
+        return new DtoAfiliado(idAfiliado,tipoDocumento,documento,nombre,apellido,sexo,direccion,telefono,correo,activo,fechaCreacion);
     }
 
 }
